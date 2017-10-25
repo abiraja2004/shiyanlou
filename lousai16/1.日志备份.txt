@@ -1,0 +1,5 @@
+sudo cron -f &
+
+crontab -e
+
+0 2 * * * cp /var/log/[dpkg.log,mysql.log,fontconfig.log] /home/shiyanlou/backup/; tar -cvf $(date +\%Y-\%m-\%d).tar /home/shiyanlou/backup/; rm /home/shiyanlou/backup/[dpkg.log,mysql.log,fontconfig.log]
