@@ -5,8 +5,11 @@ from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
- 
+
+#创建一个基类 
 Base = declarative_base()
+#相对路径当前目录下的shiyanlou.db文件
+#'sqlite:////shiyanlou.db'表示绝对路径/shiyanlou.db
 engine = create_engine('sqlite:///shiyanlou.db')
  
 class User(Base):
