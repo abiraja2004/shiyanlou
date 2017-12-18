@@ -33,12 +33,17 @@ class UserCourse(Base):
 #    course = relationship('Course', backref='usercourses')
     study_time = Column(Integer)
 
+#删除表
 Base.metadata.drop_all(engine)
+#创建表
 Base.metadata.create_all(engine)
+#创建会话类
 DBSession = sessionmaker(bind=engine)
+#创建会话实例
 session = DBSession()
  
 new_user = User(name='louuser1')
+#插入一条记录
 session.add(new_user)
  
 new_course = Course(name='loucourse1')
