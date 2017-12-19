@@ -2,6 +2,7 @@
 
 import copy
 
+#父类继承object，子类才能用super调用父类的方法
 class Course(object):
     OBJECT_TYPE = 'COURSE'
     def __init__(self, name, public, lab_count):
@@ -9,10 +10,16 @@ class Course(object):
         self.public = public
         self.lab_count = lab_count
 
+	#该注解将方法转换为属性，暴露给外部调用
     @property
     def count(self):
         return self.lab_count
+	
+	@count.setter
+	def count(self,value):
+		self.lab_count = value
 
+	#类方法，cls为类对象	
     @classmethod
     def typename(cls):
         return cls.OBJECT_TYPE
@@ -35,6 +42,7 @@ class BootcampCourse(Course):
         self.price = price
 
     def info(self):
+		#调用父类的方法
         super(BootcampCourse, self).info()
         print 'Lab count:', self.count
         print 'Public:', self.public
